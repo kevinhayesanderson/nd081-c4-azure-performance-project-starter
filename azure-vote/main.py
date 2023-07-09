@@ -33,32 +33,32 @@ from opencensus.ext.flask.flask_middleware import FlaskMiddleware
 
 # Logging
 # logger = logging.getLogger(__name__)
-# logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=8729ed5e-ceba-4ef4-8b50-fa3677030c19'))
-# logHandler = AzureLogHandler(connection_string='InstrumentationKey=8729ed5e-ceba-4ef4-8b50-fa3677030c19')
-# eventHandler = AzureEventHandler(connection_string='InstrumentationKey=8729ed5e-ceba-4ef4-8b50-fa3677030c19')
+# logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f'))
+# logHandler = AzureLogHandler(connection_string='InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f')
+# eventHandler = AzureEventHandler(connection_string='InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f')
 # logger.setLevel(logging.INFO)
 config_integration.trace_integrations(['logging'])
 config_integration.trace_integrations(['requests'])
 # Standard Logging
 logger = logging.getLogger(__name__)
-handler = AzureLogHandler(connection_string='InstrumentationKey=8729ed5e-ceba-4ef4-8b50-fa3677030c19')
+handler = AzureLogHandler(connection_string='InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f')
 handler.setFormatter(logging.Formatter('%(traceId)s %(spanId)s %(message)s'))
 logger.addHandler(handler)
 # Logging custom Events 
-logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=8729ed5e-ceba-4ef4-8b50-fa3677030c19'))
+logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f'))
 # Set the logging level
 logger.setLevel(logging.INFO)
 
 # Metrics
-exporter = metrics_exporter.new_metrics_exporter(enable_standard_metrics = True, connection_string = "InstrumentationKey=8729ed5e-ceba-4ef4-8b50-fa3677030c19")
+exporter = metrics_exporter.new_metrics_exporter(enable_standard_metrics = True, connection_string = "InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f")
 
 # Tracing
-tracer = Tracer(exporter = AzureExporter(connection_string = "InstrumentationKey=8729ed5e-ceba-4ef4-8b50-fa3677030c19"), sampler = ProbabilitySampler(1.0))
+tracer = Tracer(exporter = AzureExporter(connection_string = "InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f"), sampler = ProbabilitySampler(1.0))
 
 app = Flask(__name__)
 
 # Requests
-middleware = FlaskMiddleware(app, exporter = AzureExporter(connection_string = 'InstrumentationKey=8729ed5e-ceba-4ef4-8b50-fa3677030c19'), sampler = ProbabilitySampler(rate = 1.0))
+middleware = FlaskMiddleware(app, exporter = AzureExporter(connection_string = 'InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f'), sampler = ProbabilitySampler(rate = 1.0))
 
 # Load configurations from environment or config file
 app.config.from_pyfile('config_file.cfg')
