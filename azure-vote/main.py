@@ -7,12 +7,8 @@ import sys
 import logging
 from datetime import datetime
 
-# from opencensus.ext.azure.log_exporter import AzureEventHandler, AzureLogHandler
-# from opencensus.ext.azure import metrics_exporter
-# from opencensus.trace.tracer import Tracer
-# from opencensus.ext.azure.trace_exporter import AzureExporter
-# from opencensus.trace.samplers import ProbabilitySampler
-# from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+# App Insights
+# TODO: Import required libraries for App Insights
 
 from opencensus.ext.azure.log_exporter import AzureLogHandler
 from opencensus.ext.azure.log_exporter import AzureEventHandler
@@ -28,15 +24,7 @@ from opencensus.trace.samplers import ProbabilitySampler
 from opencensus.trace.tracer import Tracer
 from opencensus.ext.flask.flask_middleware import FlaskMiddleware
 
-# App Insights
-# TODO: Import required libraries for App Insights
 
-# Logging
-# logger = logging.getLogger(__name__)
-# logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f'))
-# logHandler = AzureLogHandler(connection_string='InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f')
-# eventHandler = AzureEventHandler(connection_string='InstrumentationKey=2c360cab-ab2b-46a0-bd8a-34fae1de279f')
-# logger.setLevel(logging.INFO)
 config_integration.trace_integrations(['logging'])
 config_integration.trace_integrations(['requests'])
 # Standard Logging
